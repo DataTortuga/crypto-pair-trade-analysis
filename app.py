@@ -24,12 +24,12 @@ def post():
     #mars_nws = mongo.db.mars_nws.find_one()
     return render_template("post.html")
 
-@app.route("/pair")
-def model():
+# @app.route("/pair")
+# def model():
 
     
     
-    return redirect("/", code=302)
+#     return redirect("/", code=302)
 
 
 if __name__ == "__main__":
