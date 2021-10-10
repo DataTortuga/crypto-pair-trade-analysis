@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, jsonify
 from flask_pymongo import PyMongo
 import pair_model
 
@@ -24,12 +24,12 @@ def post():
     #mars_nws = mongo.db.mars_nws.find_one()
     return render_template("post.html")
 
-# @app.route("/pair")
-# def model():
+@app.route("/pair/<window>")
+def model(window):
 
+    test_data = pair_model.model(int(window))
     
-    
-#     return redirect("/", code=302)
+    return jsonify(test_data.tolist())
 
 
 if __name__ == "__main__":

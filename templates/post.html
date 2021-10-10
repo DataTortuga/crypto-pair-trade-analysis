@@ -16,6 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="/static/css/simple-blog-template.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,6 +83,53 @@
           <hr>
 
           <!-- Post Content -->
+
+          <img src="../static/img/Equations.png" width="900" height="600"> 
+
+          <h3>A linear combination of securities can create a stationary time series. This idea won the nobel prize in 2003.</h3>
+
+
+          <img src="../static/img/common_trends_model.png" width="900" height="700"> 
+
+          <img src="../static/img/cancel_random_walk.png" width="900" height="700"> 
+
+
+          <img src="../static/img/regression_example_results.png" width="900" height="700">
+
+          <img src="../static/img/unit_port.png" width="900" height="700">
+
+          <img src="../static/img/daily_ret.png" width="900" height="700">
+
+          <img src="../static/img/test_results.png" width="900" height="700">
+
+          <img src="../static/img/cum_ret_results.png" width="900" height="700">
+
+          <div class="jumbotron text-center">
+            <h1>BACKTEST ON TEST SET</h1>
+            <p><a class="btn btn-primary btn-lg" href="#" id="testButton" role="button">TEST</a></p>
+          </div>
+
+          <div id="plot"></div>
+
+          <div class="well">
+            <h5>SELECT LOOKBACK WINDOW:</h5>
+            <!-- <select id="selDataset" onchange="optionChanged(this.value)"></select> -->
+            <input id="selDataset" onchange="optionChanged(this.value)" max="10" min="1" step="1" type="range" list="tickmarks">
+            <datalist id='tickmarks'>
+              <option value="1" label="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="4"></option>
+              <option value="5" label="5"></option>
+              <option value="6"></option>
+              <option value="7"></option>
+              <option value="8"></option>
+              <option value="9"></option>
+              <option value="10" label="10"></option>
+            </datalist>
+
+          </div>
+
           <p></p>
           <hr>
 
@@ -162,6 +211,7 @@
 
     <!-- jQuery -->
     <script src="/static/js/jquery.js"></script>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/js/bootstrap.min.js"></script>
