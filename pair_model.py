@@ -89,8 +89,6 @@ def model(lookback):
     hedgeRatio_df['Ones'] = np.ones(len(spread_btc))
     hedgeRatio1 = copy.deepcopy(hedgeRatio_df)
 
-    hedgeRatio1
-
 
     # For next step we need the negative of the hedgeRatio so...
     hedgeRatio1['Hedge Ratio'] = hedgeRatio1['Hedge Ratio']*-1.0

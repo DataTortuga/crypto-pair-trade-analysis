@@ -17,7 +17,7 @@
 // }
 
 // // Function updates plotly graph when subject id is changed
-// function update_plot(index, data) {
+function update_plot(data) {
  
 //     otu_value = data.samples[index].sample_values.slice(0, 10);
 //     otu_id = data.samples[index].otu_ids.slice(0,10);
@@ -63,21 +63,105 @@
       
 //     Plotly.newPlot("bar", data1, layout);
 //     Plotly.newPlot("bubble", data2, layout);
-// }
+
+
+// var trace1 = {
+//     x: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+//     y: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+//     name: 'Name of Trace 1',
+//     type: 'scatter'
+//   };
+  
+//   var data = [trace1, trace2];
+//   var layout = {
+//     title: {
+//       text:'Plot Title',
+//       font: {
+//         family: 'Courier New, monospace',
+//         size: 24
+//       },
+//       xref: 'paper',
+//       x: 0.05,
+//     },
+//     xaxis: {
+//       title: {
+//         text: 'x Axis',
+//         font: {
+//           family: 'Courier New, monospace',
+//           size: 18,
+//           color: '#7f7f7f'
+//         }
+//       },
+//     },
+//     yaxis: {
+//       title: {
+//         text: 'y Axis',
+//         font: {
+//           family: 'Courier New, monospace',
+//           size: 18,
+//           color: '#7f7f7f'
+//         }
+//       }
+//     }
+//   };
+
+    data_len = []
+    for (let i = 0; i < data.length; i++) {
+        data_len.push(i)
+    }
+
+    let trace = {
+
+        x: data_len,
+        y: data,
+        type: 'line',
+    };
+
+    let layout = {
+        title: {
+            text: "Strategy Returns with Data-Snooping Bias"
+        },
+        xaxis: {
+            title: "Days"
+        },
+        yaxis: {
+            title: "Strategy Returns"
+        },
+        showgrid: true,
+        showticklabels: true,
+        showline: true
+
+    }
+        
+    console.log(trace)
+
+    let ret_data = [trace]
+
+    Plotly.newPlot("plot",ret_data)
+
+
+}
+
+
 
 // Defines what to do when subject ID is changed
 function optionChanged(sam_id) {
     d3.json(`/pair/${sam_id}`).then(function (data) {
-        console.log(data)
-        let trace = {
-        x: [Array(data.length).keys()],
-        y: data,
+        //console.log(data)
 
-        type: 'line',
+        // let trace = {
+        // x: [Array(data.length).keys()],
+        // y: data,
 
-    };
-    let ret_data = [trace]
-        Plotly.newPlot("plot",ret_data)
+        // type: 'line',
+
+        // };
+
+        // let ret_data = [trace]
+        // Plotly.newPlot("plot",ret_data)
+
+        update_plot(data)
+
     })
 }
 
@@ -87,8 +171,7 @@ function init() {
         select.append('option').text(i)
     }
     update_panel(0, data)
-    update_plot(0, data)
 
 }
 
-init()
+//init()
